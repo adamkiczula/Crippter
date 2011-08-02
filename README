@@ -1,0 +1,4 @@
+Crippter is a simple class to encrypt files or strings with a password.
+It is neither fast nor very secure but works when the security requirements are low and the content to be encrypted is small.
+
+Usage examples can be found in the main section of the class.
