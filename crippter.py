@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:        Crippter
+# Purpose:     Simple password obfuscation for strings and files.
 #
 # Author:      werwath
 #
@@ -60,16 +60,16 @@ class Crippter:
 
 def main():
     #FIXME - Make this a real unit test.
-    key = "secret"
-    value = "jo jo bolonga rules!!!!"
-    x = Crippter(key)
-    enc = x.encryptString(value)
-    print "GOT:"+enc
-    dec = x.decryptString(enc)
-    print "Original String: %s\nKey: %s\nHash: %s\nDecrypted String: %s\nEqual?: %s"%(value, key, enc, dec, value==dec)
+    password = "secret"
+    message = "This is a secret for jo jo bolonga!!!!"
+    crippter = Crippter(password)
+    encoded_message = crippter.encryptString(message)
+    print "GOT:"+encoded_message
+    decoded_message = Crippter(password).decryptString(encoded_message)
+    print "Original String: %s\nKey: %s\nHash: %s\nDecrypted String: %s\nEqual?: %s"%(message, password, encoded_message, decoded_message, message==decoded_message)
 
-    x.encryptFile('pain.mp3','encrypted_pain.mp3')
-    x.decryptFile('encrypted_pain.mp3','decrypted_pain.mp3')
+    crippter.encryptFile('pain.mp3','encrypted_pain.mp3')
+    crippter.decryptFile('encrypted_pain.mp3','decrypted_pain.mp3')
     print "Equal %s\n"%(filecmp.cmp('decrypted_pain.mp3','pain.mp3'))
 
 
